@@ -44,11 +44,11 @@
 
             <!--Card Text-->
             <p class="card-text text-white my-3">
-                Don't have an account? <span class="ms-2"><a href="register.html" class="btn btn-sm text-warning">Sign up</a></span>
+                Don't have an account? <span class="ms-2"><a href="/register" class="btn btn-sm text-warning">Sign up</a></span>
             </p>
             <!-- Back Button to landing page -->
             <small class="text-warning">
-                <i class="fa fa-arrow-alt-circle-left"><a href="index.html" class="btn btn-sm text-warning">Back</a></i>
+                <i class="fa fa-arrow-alt-circle-left"><a href="/" class="btn btn-sm text-warning">Back</a></i>
             </small>
             <!-- End of Back Button to landing page -->
 
