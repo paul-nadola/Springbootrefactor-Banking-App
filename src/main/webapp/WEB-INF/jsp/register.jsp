@@ -1,3 +1,6 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix = "fn" uri = "http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,18 +23,20 @@
             <!--End of form header-->
 
             <!--Registration Form-->
-            <form action="" class="reg-form">
+            <form:form action="" class="reg-form" modelAttribute="registerUser">
                 <!-- Form Row -->
                 <div class="row">
                     <!--Form Group-->
                     <div class="form-group col">
-                         <input type="text" name="first_name" class="form-control form-control-lg" placeholder="Enter First Name"/>
+                         <form:input type="text" path="first_name" class="form-control form-control-lg" placeholder="Enter First Name"/>
+                         <form:errors path="first_name" class="text-white bg-danger"/>
                     </div>
                     <!--End of Form Group-->
 
                     <!--Form Group-->
                     <div class="form-group col">
-                        <input type="text" name="last_name" class="form-control form-control-lg" placeholder="Enter Last Name" />
+                        <form:input type="text" path="last_name" class="form-control form-control-lg" placeholder="Enter Last Name" />
+                        <form:errors path="last_name" class="text-white bg-danger"/>
                     </div>
                     <!--End of Form Group-->
                 </div>
@@ -39,7 +44,8 @@
 
                 <!--Form Group-->
                 <div class="form-group col">
-                    <input type="email" name="email" class="form-control form-control-lg" placeholder="Enter Email Address" />
+                    <form:input type="email" path="email" class="form-control form-control-lg" placeholder="Enter Email Address" />
+                    <form:errors path="email" class="text-white bg-danger"/>
                 </div>
                 <!--End of Form Group-->
 
@@ -47,13 +53,15 @@
                 <div class="row">
                     <!--Form Group-->
                     <div class="form-group col">
-                        <input type="password" name="password" class="form-control form-control-lg" placeholder="Enter password" />
+                        <form:input type="password" path="password" class="form-control form-control-lg" placeholder="Enter password" />
+                        <form:errors path="password" class="text-white bg-danger"/>
                     </div>
                     <!--End of Form Group-->
 
                     <!--Form Group-->
                     <div class="form-group col">
                         <input type="password" name="confirm_password" class="form-control form-control-lg" placeholder="Confirm Password" />
+                        <small 'text-white bg-danger'>${confirm_pass}</small>
                     </div>
                     <!--End of Form Group-->
                 </div>
@@ -61,7 +69,7 @@
                 <div class="form-group col">
                     <button class="btn btn-lg">Register</button>
                 </div>
-            </form>
+            </form:form>
             <!--End of Registration Form-->
 
             <!--Card Text-->

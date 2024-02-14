@@ -1,0 +1,35 @@
+Always include JSP tags - Tag libraries provide custom tags that can be used to perform various tasks within JSP.
+
+JSTL Core Tag Library: <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+This taglib directive imports the JSTL (JavaServer Pages Standard Tag Library) core tag
+library. The uri attribute specifies the Uniform Resource Identifier for the JSTL core library,
+and the prefix attribute defines a prefix that will be used to reference the tags from this library in the JSP page.
+In this case, the prefix is set to "c."
+for example:
+<c:forEach var="item" items="${itemsList}">
+    <!-- JSTL core tag logic here -->
+</c:forEach>
+
+
+Spring Form Tag Library: <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+This taglib directive imports the Spring Form tag library. The uri attribute specifies the URI for
+the Spring Form tag library, and the prefix attribute defines a prefix for referencing the tags
+from this library in the JSP page. In this case, the prefix is set to "form."
+for example:
+<form:input path="username" />
+<form:select path="country" items="${countryList}" />
+
+JSTL Functions Tag Library: <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+This taglib directive imports the JSTL Functions tag library. The uri attribute specifies the URI
+for the JSTL Functions library, and the prefix attribute defines a prefix for referencing the tags
+from this library in the JSP page. In this case, the prefix is set to "fn."
+for example:
+${fn:length(myList)}
+${fn:toUpperCase(myString)}
+
+
+
+When using path as the input attribute the name must be the same as the one you created in your model
+
+
+
