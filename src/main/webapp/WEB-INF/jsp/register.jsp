@@ -23,7 +23,7 @@
             <!--End of form header-->
 
             <!--Registration Form-->
-            <form:form action="" class="reg-form" modelAttribute="registerUser">
+            <form:form action="/register" class="reg-form" modelAttribute="registerUser">
                 <!-- Form Row -->
                 <div class="row">
                     <!--Form Group-->

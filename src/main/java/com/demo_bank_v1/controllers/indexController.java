@@ -25,13 +25,7 @@ public class indexController {
         return getLoginPage;
     }
 
-    @GetMapping("/register")
-    public ModelAndView getRegister(){
-        ModelAndView getRegisterPage = new ModelAndView("register");
-        System.out.println("In register page controller");
-        getRegisterPage.addObject("PageTitle", "Register");
-        return getRegisterPage;
-    }
+
     @GetMapping("/error")
     public ModelAndView getError(){
         ModelAndView getErrorPage = new ModelAndView("error");
