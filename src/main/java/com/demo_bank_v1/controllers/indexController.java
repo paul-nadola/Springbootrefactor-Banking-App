@@ -32,4 +32,11 @@ public class indexController {
         getRegisterPage.addObject("PageTitle", "Register");
         return getRegisterPage;
     }
+    @GetMapping("/error")
+    public ModelAndView getError(){
+        ModelAndView getErrorPage = new ModelAndView("error");
+        System.out.println("In error page controller");
+        getErrorPage.addObject("PageTitle", "Error");
+        return getErrorPage;
+    }
 }
