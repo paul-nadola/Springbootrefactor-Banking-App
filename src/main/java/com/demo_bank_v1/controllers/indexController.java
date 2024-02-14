@@ -39,4 +39,11 @@ public class indexController {
         getErrorPage.addObject("PageTitle", "Error");
         return getErrorPage;
     }
+    @GetMapping("/verify")
+    public ModelAndView getVerify(){
+        ModelAndView getVerifyPage = new ModelAndView("login");
+        System.out.println("In error page controller");
+        getVerifyPage.addObject("PageTitle", "Error");
+        return getVerifyPage;
+    }
 }
