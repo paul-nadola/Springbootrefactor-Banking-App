@@ -46,6 +46,28 @@ public class RegisterController {
                     "The confirm password field is required");
             return registrationPage;
         }
+
+        //TODO: CHECK FOR PASSWORDS MATCH
+
+        if (!password.equals(confirm_password)){
+            registrationPage.addObject(
+                    "passwordMissmatch",
+                    "Password do not match");
+            return registrationPage;
+        };
+
+        //TODO: GET TOKEN STRING
+
+        //TODO: GENERATE RANDOM CODE
+
+        //TODO:HASH PASSWORD
+
+        //TODO: REGISTER USER:
+
+        //TODO: SEND EMAIL NOTIFICATION
+
+        //TODO: RETURN TO REGISTER PAGE
+
         return registrationPage;
     };
 

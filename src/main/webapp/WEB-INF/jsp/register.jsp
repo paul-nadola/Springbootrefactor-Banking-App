@@ -61,7 +61,7 @@
                     <!--Form Group-->
                     <div class="form-group col">
                         <input type="password" name="confirm_password" class="form-control form-control-lg" placeholder="Confirm Password" />
-                        <small 'text-white bg-danger'>${confirm_pass}</small>
+                        <small class='text-white bg-danger'>${confirm_pass}</small>
                     </div>
                     <!--End of Form Group-->
                 </div>

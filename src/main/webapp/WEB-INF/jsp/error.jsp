@@ -47,7 +47,7 @@
             <!--End of Card Text-->
             <hr>
             <!--Back to login page-->
-            <a href="login.html" class="btn btn-sm btn-danger">
+            <a href="/login" class="btn btn-sm btn-danger">
                 <i class="fa fa-arrow-alt-circle-left me-1">Back</i>
             </a>
             <!--End of Back to login page-->

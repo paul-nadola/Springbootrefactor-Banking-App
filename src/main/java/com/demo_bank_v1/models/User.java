@@ -13,11 +13,11 @@ public class User {
     @Id
     private int user_id;
 
-    @NotEmpty(message = "The First name field cannot be empty")
-    @Size(min = 3)
+    @NotEmpty(message = "The first name field cannot be empty")
+    @Size(min = 1, message = "The first name field must be greater than one character")
     private String first_name;
-    @NotEmpty
-    @Size(min = 3)
+    @NotEmpty(message = "The last name field cannot be empty")
+    @Size(min = 1,  message = "The first name field must be greater than one character")
     private String last_name;
     @Email
     @NotEmpty
@@ -26,6 +26,8 @@ public class User {
             message = "Please Enter a Valid Email"
     )
     private String email;
+    @NotEmpty
+    @NotNull
     private String password;
     private String token;
     private String code;
