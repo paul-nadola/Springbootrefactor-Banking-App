@@ -4,6 +4,8 @@ package com.demo_bank_v1.controllers;
 import com.demo_bank_v1.helpers.HTML;
 import com.demo_bank_v1.helpers.Token;
 import com.demo_bank_v1.models.User;
+import com.demo_bank_v1.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -19,6 +21,8 @@ import java.util.Random;
 @Controller
 public class RegisterController {
 
+    @Autowired
+    private UserRepository userRepository;
     @GetMapping("/register")
     public ModelAndView getRegister(){
         ModelAndView getRegisterPage = new ModelAndView("register");
@@ -75,8 +79,10 @@ public class RegisterController {
         String hash_password = BCrypt.hashpw(password, BCrypt.gensalt());
 
         //TODO: REGISTER USER:
+        userRepository.registerUser(first_name, last_name, email, hash_password, token, Integer.toString(code));
 
         //TODO: SEND EMAIL NOTIFICATION
+
 
         //TODO: RETURN TO REGISTER PAGE
 
