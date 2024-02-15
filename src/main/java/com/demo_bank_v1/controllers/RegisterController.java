@@ -1,7 +1,10 @@
 package com.demo_bank_v1.controllers;
 
 
+import com.demo_bank_v1.helpers.HTML;
+import com.demo_bank_v1.helpers.Token;
 import com.demo_bank_v1.models.User;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+import java.util.Random;
 
 @Controller
 public class RegisterController {
@@ -57,10 +61,18 @@ public class RegisterController {
         };
 
         //TODO: GET TOKEN STRING
+        String token = Token.generateToken();
 
         //TODO: GENERATE RANDOM CODE
+        Random random = new Random();
+        int bound = 123;
+        int code = bound * random.nextInt(bound);
+
+        //TODO: GET EMAIL HTML BODY
+        String emailBody = HTML.htmlEmailTemplate(token, Integer.toString(code));
 
         //TODO:HASH PASSWORD
+        String hash_password = BCrypt.hashpw(password, BCrypt.gensalt());
 
         //TODO: REGISTER USER:
 
