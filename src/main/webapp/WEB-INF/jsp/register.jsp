@@ -23,7 +23,7 @@
             <!--End of form header-->
             <!--Display Message -->
             <c:if test="${requestScope.passwordMismatch != null}">
-                <div class="alert alert-danger text-center border border-danger">
+                <div class="alert alert-danger text-black text-center border border-danger">
                 <b>${requestScope.passwordMisMatch}</b>
                 </div>
             </c:if>

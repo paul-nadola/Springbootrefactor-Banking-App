@@ -35,7 +35,7 @@ public class RegisterController {
 
     @PostMapping("/register")
     public ModelAndView register(@Valid
-                @ModelAttribute("registerUser")  User user,
+                @ModelAttribute("registerUser")User user,
                BindingResult result,//request parameters
                                  @RequestParam("first_name") String first_name,
                                  @RequestParam("last_name") String last_name,
@@ -43,7 +43,7 @@ public class RegisterController {
                                  @RequestParam("password") String password,
                                  @RequestParam("confirm_password") String confirm_password
 
-                ) throws MessagingException {
+                ) throws Exception {
         ModelAndView registrationPage = new ModelAndView("register");
 
         //error check
@@ -82,7 +82,7 @@ public class RegisterController {
         userRepository.registerUser(first_name, last_name, email, hash_password, token, Integer.toString(code));
 
         //TODO: SEND EMAIL NOTIFICATION
-        MailMessenger.htmlEmailMessenger("no-reply@somecompany.com", email, "Verify Account", emailBody);
+        MailMessenger.htmlEmailMessenger("oyingadev@gmail.com", email, "Verify Account", emailBody);
 
         //TODO: RETURN TO REGISTER PAGE
 

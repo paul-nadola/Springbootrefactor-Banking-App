@@ -9,7 +9,7 @@ import javax.mail.internet.MimeMessage;
 
 public class MailMessenger {
 
-    public static void htmlEmailMessenger(String from, String toMail, String subject, String body) throws MessagingException {
+    public static void htmlEmailMessenger(String from, String toMail, String subject, String body) throws Exception {
         // Get Mail Config:
         JavaMailSender sender = MailConfig.getMailConfig();
         // Set Mime Message:
