@@ -35,10 +35,8 @@ public class RegisterController {
 
     @PostMapping("/register")
     public ModelAndView register(@Valid
-                @ModelAttribute("registerUser")
-                User user,
-                BindingResult result,
-                //request parameters
+                @ModelAttribute("registerUser")  User user,
+               BindingResult result,//request parameters
                                  @RequestParam("first_name") String first_name,
                                  @RequestParam("last_name") String last_name,
                                  @RequestParam("email") String email,

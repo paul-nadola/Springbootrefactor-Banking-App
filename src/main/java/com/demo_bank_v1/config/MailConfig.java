@@ -19,10 +19,10 @@ public class MailConfig {
         props.put("mail.debug", "true");
 
         // Set Mail Credentials:
-        emailConfig.setHost("localhost");
-        emailConfig.setPort(25);
-        emailConfig.setUsername("no-reply@somecompany.com");
-        emailConfig.setPassword("password123");
+        emailConfig.setHost("smtp.gmail.com");
+        emailConfig.setPort(587);
+        emailConfig.setUsername("oyingadev@gmail.com");
+        emailConfig.setPassword("N@dola7244");
 
         return emailConfig;
     }
