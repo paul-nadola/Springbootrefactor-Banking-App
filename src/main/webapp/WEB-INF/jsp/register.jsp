@@ -24,7 +24,7 @@
             <!--Display Message -->
             <c:if test="${requestScope.passwordMismatch != null}">
                 <div class="alert alert-danger text-black text-center border border-danger">
-                <b>${requestScope.passwordMisMatch}</b>
+                <b>${requestScope.passwordMismatch}</b>
                 </div>
             </c:if>
             <!--End of Display Message -->
