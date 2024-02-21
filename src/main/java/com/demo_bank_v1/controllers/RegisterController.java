@@ -73,13 +73,13 @@ public class RegisterController {
         int code = bound * random.nextInt(bound);
 
         //TODO: GET EMAIL HTML BODY
-        String emailBody = HTML.htmlEmailTemplate(token, Integer.toString(code));
+        String emailBody = HTML.htmlEmailTemplate(token, code);
 
         //TODO:HASH PASSWORD
         String hash_password = BCrypt.hashpw(password, BCrypt.gensalt());
 
         //TODO: REGISTER USER:
-        userRepository.registerUser(first_name, last_name, email, hash_password, token, Integer.toString(code));
+        userRepository.registerUser(first_name, last_name, email, hash_password, token, code);
 
         //TODO: SEND EMAIL NOTIFICATION
         MailMessenger.htmlEmailMessenger("oyingadev@gmail.com", email, "Verify Account", emailBody);

@@ -1,70 +1,70 @@
-//package com.demo_bank_v1.config;
-//
-//import org.springframework.context.annotation.Bean;
-//import org.springframework.mail.javamail.JavaMailSenderImpl;
-//
-//import java.util.Properties;
-//
-//public class MailConfig {
-//
-//    @Bean
-//    public static JavaMailSenderImpl getMailConfig(){
-//        JavaMailSenderImpl emailConfig = new JavaMailSenderImpl();
-//
-//        // Set Properties:
-//        Properties props = emailConfig.getJavaMailProperties();
-//        props.put("mail.transport.protocol", "smtp");
-//        props.put("mail.smtp.auth", "true");
-//        props.put("mail.smtp.starttls.enable", "true");
-//        props.put("mail.debug", "true");
-//
-//        // Set Mail Credentials:
-//        emailConfig.setHost("smtp.gmail.com");
-//        emailConfig.setPort(587);
-//        emailConfig.setUsername("oyingadev@gmail.com");
-//        emailConfig.setPassword("N@dola7244");
-//
-//        return emailConfig;
-//    }
-//    // End Of Email Config Method.
-//}
 package com.demo_bank_v1.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
-import org.springframework.mail.javamail.JavaMailSender;
 
 import java.util.Properties;
 
 public class MailConfig {
 
     @Bean
-    public static JavaMailSender getMailConfig() {
-        JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
+    public static JavaMailSenderImpl getMailConfig(){
+        JavaMailSenderImpl emailConfig = new JavaMailSenderImpl();
 
         // Set Properties:
-        Properties properties = mailSender.getJavaMailProperties();
-        properties.put("mail.transport.protocol", "smtp");
-        properties.put("mail.smtp.auth", "true");
-        properties.put("mail.smtp.starttls.enable", "true");
-        properties.put("mail.debug", "true");
-
-//        properties.remove("mail.smtp.auth.mechanisms");
-        // Use OAuth 2.0 for Gmail:
-
-        properties.put("mail.smtp.auth.mechanisms", "XOAUTH2");
+        Properties props = emailConfig.getJavaMailProperties();
+        props.put("mail.transport.protocol", "smtp");
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.debug", "true");
 
         // Set Mail Credentials:
-        mailSender.setHost("smtp.gmail.com");
-        mailSender.setPort(587);
-        mailSender.setUsername("oyingadev@gmail.com");
+        emailConfig.setHost("smtp.gmail.com");
+        emailConfig.setPort(587);
+        emailConfig.setUsername("oyingadev@gmail.com");
+        emailConfig.setPassword("N@dola7244");
 
-        // Use an access token instead of the password for OAuth 2.0:
-        mailSender.setPassword("N@dola7244");
-
-        return mailSender;
+        return emailConfig;
     }
+    // End Of Email Config Method.
 }
+//package com.demo_bank_v1.config;
+
+//import org.springframework.context.annotation.Bean;
+//import org.springframework.mail.javamail.JavaMailSenderImpl;
+//import org.springframework.mail.javamail.JavaMailSender;
+
+//import java.util.Properties;
+//
+//public class MailConfig {
+//
+//    @Bean
+//    public static JavaMailSender getMailConfig() {
+//        JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
+//
+//        // Set Properties:
+//        Properties properties = mailSender.getJavaMailProperties();
+//        properties.put("mail.transport.protocol", "smtp");
+//        properties.put("mail.smtp.auth", "true");
+//        properties.put("mail.smtp.starttls.enable", "true");
+//        properties.put("mail.debug", "true");
+//
+////        properties.remove("mail.smtp.auth.mechanisms");
+//        // Use OAuth 2.0 for Gmail:
+//
+//        properties.put("mail.smtp.auth.mechanisms", "XOAUTH2");
+//
+//        // Set Mail Credentials:
+//        mailSender.setHost("smtp.gmail.com");
+//        mailSender.setPort(587);
+//        mailSender.setUsername("oyingadev@gmail.com");
+//
+//        // Use an access token instead of the password for OAuth 2.0:
+//        mailSender.setPassword("N@dola7244");
+//
+//        return mailSender;
+//    }
+//}
 //package com.demo_bank_v1.config;
 //
 //import com.google.api.client.auth.oauth2.Credential;

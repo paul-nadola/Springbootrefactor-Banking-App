@@ -23,6 +23,6 @@ public interface UserRepository extends CrudRepository<User, Integer> {
                       @Param("email")String email,
                       @Param("password")String password,
                       @Param("token")String token,
-                      @Param("code")String code
+                      @Param("code")int code
                       );
 }
