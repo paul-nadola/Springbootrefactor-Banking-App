@@ -41,13 +41,18 @@
         <div class="card-body">
             <!--Card Text-->
             <p class="card-text">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem libero
-                aliquid natus iure dolor ipsum iste qui earum laborum provident.
+                <!--Display Message -->
+                    <c:if test="${requestScope.error != null}">
+                        <div class="alert alert-danger text-black text-center border border-danger">
+                        <b>${requestScope.error}</b>
+                        </div>
+                    </c:if>
+                <!--End of Display Message -->
             </p>
             <!--End of Card Text-->
             <hr>
             <!--Back to login page-->
-            <a href="/login.html" class="btn btn-sm btn-danger">
+            <a href="/login" class="btn btn-sm btn-danger">
                 <i class="fa fa-arrow-alt-circle-left me-1">Back</i>
             </a>
             <!--End of Back to login page-->

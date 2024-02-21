@@ -45,9 +45,21 @@ public class indexController {
             @RequestParam("code") String code
     ){
         //Set View
-        ModelAndView getVerifyPage = new ModelAndView("login");
+        ModelAndView getVerifyPage;
+
+        //Get token in database
+        String db_token = userRepository.checkToken(token);
+        //Check if token is valid
+        if (db_token == null){
+            getVerifyPage = new ModelAndView("error");
+            getVerifyPage.addObject("error", "This session has expired!");
+        };
+        //End of Check if token is valid
+
+        //update and verify account
         userRepository.verifyAccount(token, code);
 
+        getVerifyPage = new ModelAndView("login");
         getVerifyPage.addObject("success", "Account Verified Successfully, Please proceed to log in!");
         System.out.println("In verify account controller");
         getVerifyPage.addObject("PageTitle", "Error");
