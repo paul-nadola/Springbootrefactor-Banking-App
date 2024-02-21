@@ -1,12 +1,18 @@
 package com.demo_bank_v1.controllers;
 
 
+import com.demo_bank_v1.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class indexController {
+
+    @Autowired
+    private UserRepository userRepository;
 
 
     @GetMapping("/")
@@ -34,9 +40,16 @@ public class indexController {
         return getErrorPage;
     }
     @GetMapping("/verify")
-    public ModelAndView getVerify(){
+    public ModelAndView getVerify(
+            @RequestParam("token") String token,
+            @RequestParam("code") String code
+    ){
+        //Set View
         ModelAndView getVerifyPage = new ModelAndView("login");
-        System.out.println("In error page controller");
+        userRepository.verifyAccount(token, code);
+
+        getVerifyPage.addObject("success", "Account Verified Successfully, Please proceed to log in!");
+        System.out.println("In verify account controller");
         getVerifyPage.addObject("PageTitle", "Error");
         return getVerifyPage;
     }

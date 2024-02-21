@@ -1,3 +1,6 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix = "fn" uri = "http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,6 +23,14 @@
                 <i class="fa fa-user-circle"></i> Login
             </h1>
             <!--End of form header-->
+
+            <!--Display Message -->
+                <c:if test="${requestScope.success != null}">
+                    <div class="alert alert-success text-center border border-success">
+                    <b>${requestScope.success}</b>
+                    </div>
+                </c:if>
+            <!--End of Display Message -->
 
             <!--Login Form-->
             <form action="" class="login-form">
