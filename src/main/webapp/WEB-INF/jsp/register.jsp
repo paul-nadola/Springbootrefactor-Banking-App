@@ -21,6 +21,7 @@
                 <i class="fa fa-edit"></i> Register
             </h1>
             <!--End of form header-->
+
             <!--Display Message -->
             <c:if test="${requestScope.passwordMismatch != null}">
                 <div class="alert alert-danger text-black text-center border border-danger">

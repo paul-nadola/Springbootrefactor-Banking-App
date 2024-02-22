@@ -23,13 +23,7 @@ public class indexController {
         return getIndexPage;
     }
 
-    @GetMapping("/login")
-    public ModelAndView getLogin(){
-        ModelAndView getLoginPage = new ModelAndView("login");
-        System.out.println("In login page controller");
-        getLoginPage.addObject("PageTitle", "Login");
-        return getLoginPage;
-    }
+
 
 
     @GetMapping("/error")
