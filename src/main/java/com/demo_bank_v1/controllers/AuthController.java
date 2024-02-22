@@ -1,6 +1,7 @@
 package com.demo_bank_v1.controllers;
 
 import com.demo_bank_v1.helpers.Token;
+import com.demo_bank_v1.models.User;
 import com.demo_bank_v1.repository.UserRepository;
 import org.apache.jasper.tagplugins.jstl.core.If;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpSession;
 
 @Controller
 public class AuthController {
@@ -35,7 +38,8 @@ public class AuthController {
             @RequestParam("email")String email,
             @RequestParam("password")String password,
             @RequestParam("_token")String token,
-            Model model
+            Model model,
+            HttpSession session
     ){
 
         //TODO: VALIDATE INPUT FIELDS / FORM DATA:
@@ -56,9 +60,6 @@ public class AuthController {
             if (!BCrypt.checkpw(password, getPasswordInDatabase)) {
                 model.addAttribute("error", "Incorrect Username or Password");
                 return "login";
-            }else {
-                model.addAttribute("success", "Login Successful");
-                return "login";
             }
             //End of Validate Password
         }else {
@@ -67,11 +68,24 @@ public class AuthController {
         }
 
         //TODO: CHECK IF USER ACCOUNT IS VERIFIED:
-
+        int verified = userRepository.isVerified(getEmailInDatabase);
+        //Check if account is verified
+        if (verified != 1){
+            String msg = "This account is not ye verified, please check email and verify account"
+            model.addAttribute("error", msg);
+            return "login";
+        }
+        //End of Check if account is verified
         //TODO: PROCEED TO LOG THE USER IN:
 
+        User user = userRepository.getUserDetails(getEmailInDatabase);
 
+        //Set session attribute:
+        session.setAttribute("user", user);
+        session.setAttribute("token", token);
+        session.setAttribute("Authenticated", true);
 
+        return "redirect:/app/dashboard";
     };
-
+    //End of authenticating user
 }
