@@ -25,19 +25,19 @@ public class AppController {
     public ModelAndView getDashboard(HttpSession session){
         ModelAndView getDashboardPage = new ModelAndView("dashboard");
 
-        //get the details of the Logged-in user
-        //User user = (User) session.getAttribute("user");
+//        get the details of the Logged-in user
+        User user = (User) session.getAttribute("user");
 
-        //get the accounts of the logged-in user
-        //List<Accounts> getUserAccounts = accountRepository.getUserAccountById(user.getUser_id());
+//        get the accounts of the logged-in user
+        List<Accounts> getUserAccounts = accountRepository.getUserAccountById(user.getUser_id());
 
 
-        //get balance
-        //BigDecimal totalAccountBalance = accountRepository.getTotalBalance(user.getUser_id());
+//        get balance
+        BigDecimal totalAccountBalance = accountRepository.getTotalBalance(user.getUser_id());
 
-        //set objects
-        //getDashboardPage.addObject("userAccounts", getUserAccounts);
-        //getDashboardPage.addObject("totalBalance", totalAccountBalance);
+//        set objects
+        getDashboardPage.addObject("userAccounts", getUserAccounts);
+        getDashboardPage.addObject("totalBalance", totalAccountBalance);
 
 
         return getDashboardPage;

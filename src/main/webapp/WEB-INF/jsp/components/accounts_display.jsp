@@ -30,7 +30,9 @@
             Total Account Balance
         </h2>
         <h2 class="ms-auto">
-            0.00
+            <c:if test="${requestScope.totalBalance != null}">
+                <c:out value="${totalBalance}" />
+            </c:if>
         </h2>
     </div>
 

@@ -13,16 +13,25 @@
     <title>Dashboard</title>
 </head>
 <body>
-
+    <!-- Header -->
     <c:import url="components/incl/header.jsp" />
 
+    <!-- Transact offcanvas : pulls from the left-->
+    <c:import url="components/transact_offcanvas.jsp" />
 
-    <!-- Display Accounts -->
+    <!-- Add Accounts offcanvas : pulls from the right-->
+    <c:import url="components/add_account_offcanvas.jsp" />
 
-    <!--Do not Display Accounts -->
+    <c:choose>
+        <c:when test="${fn:length(userAccounts) > 0}">
+            <!-- Display Accounts -->
+            <c:import url="components/accounts_display.jsp" />
+        </c:when>
+        <c:otherwise>
+            <!--Do not Display Accounts -->
+            <c:import url="components/no_accounts_display.jsp" />
+        </c:otherwise>
+    </c:choose>
+    <!-- Footer -->
+    <c:import url="components/incl/footer.jsp" />
 
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../js/main.js"></script>
-</body>
-</html>
