@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/fontawesome-free-6.5.1-web/css/all.css">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="../css/main.css">
     <!-- <script src="./js/bootstrap.bundle.js"></script> -->
     <title>Dashboard</title>
 </head>
@@ -376,41 +376,7 @@
     <!-- End of Container: Accordion Home / Drop Down -->
 
 
-    <!-- Container: No Accounts -->
-    <div class="container">
-        <!-- Card : No accounts -->
-        <div class="card no-accounts-card">
-            <!-- Card Body -->
-            <div class="card-body">
-                <!-- Card Title -->
-                <h1 class="card-title">
-                    <i class="fas fa-ban text-danger"></i>No Registered Accounts
-                </h1>
-                <!--End of Card Title -->
-                <br>
-                <!-- Card Text -->
-                <div class="card-text">
-                    You currently do not have any registered accounts. <br>
-                    Please click below to register / add a new account.
-                </div>
-                <!--End of Card Text -->
-                <br>
-                <button id="" class="btn btn-primary btn-lg shadow" type="button" data-bs-toggle="offcanvas"
-                    data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
-                    <i class="fa fa-credit-card"></i> Add new account
-                </button>
-
-            </div>
-            <!--End of Card Body -->
-        </div>
-        <!--End of Card : No accounts -->
-
-    </div>
-    <!--End of Container: No Accounts -->
-
-
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="./js/main.js"></script>
+    <script src="../js/main.js"></script>
 </body>
 </html>
