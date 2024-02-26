@@ -22,13 +22,13 @@
         <!-- Display Name -->
 
         <div class="display-name ms-auto text-white">
-            <i class="fa fa-circle text-success me-2"></i>Welcome <span>Nadola</span>
+            <i class="fa fa-circle text-success me-2"></i>Welcome <span>${user.first_name} ${user.last_name}</span>
         </div>
 
         <!-- End of Display Name -->
 
         <!--Logout button-->
-        <a href="" class="btn btn-sm text-white ms-2">
+        <a href="/logout" class="btn btn-sm text-white ms-2">
             <i class="fa fa-sign-out me-2">Sign Out</i>
         </a>
         <!--End of Logout button-->

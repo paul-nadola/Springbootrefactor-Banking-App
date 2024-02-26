@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 
@@ -71,7 +72,7 @@ public class AuthController {
         int verified = userRepository.isVerified(getEmailInDatabase);
         //Check if account is verified
         if (verified != 1){
-            String msg = "This account is not ye verified, please check email and verify account"
+            String msg = "This account is not ye verified, please check email and verify account";
             model.addAttribute("error", msg);
             return "login";
         }
@@ -88,4 +89,12 @@ public class AuthController {
         return "redirect:/app/dashboard";
     };
     //End of authenticating user
+
+    @GetMapping("/logout")
+    public String logout(HttpSession session, RedirectAttributes redirectAttributes){
+        session.invalidate();
+        redirectAttributes.addFlashAttribute("logged_out", "Logged out successfully");
+        return "redirect:/login";
+    }
+
 }

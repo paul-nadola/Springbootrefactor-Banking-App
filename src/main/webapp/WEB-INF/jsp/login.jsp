@@ -40,10 +40,16 @@
                 </c:if>
             <!--End of Display Message -->
 
+            <!--Display Message -->
+                <c:if test="${logged_out != null}">
+                    <div class="alert alert-info text-black text-center border border-info">
+                    <b>${logged_out}</b>
+                    </div>
+                </c:if>
+            <!--End of Display Message -->
+
             <!--Login Form-->
             <form action="/login" method="POST" class="login-form">
-
-
                 <!--Form Group-->
                 <div class="form-group col">
                     <input type="email" name="email" class="form-control form-control-lg"
