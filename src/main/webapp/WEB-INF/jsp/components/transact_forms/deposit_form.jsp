@@ -7,7 +7,7 @@
     <!-- Card Body -->
     <div class="card-body">
        <!--Deposit Form-->
-       <form action="" class="deposit-form">
+       <form action="/transact/deposit" method="POST" class="deposit-form">
         <!-- Form Group -->
         <div class="form-group mb-2">
             <label for="">Enter deposit amount</label>
