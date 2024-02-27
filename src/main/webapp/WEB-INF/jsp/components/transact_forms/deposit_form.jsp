@@ -20,6 +20,11 @@
             <!--Select Account Options-->
             <select name="account_id" class="form-control my-3" id="">
                 <option value="">--Select Account--</option>
+                <c:if test="${userAccounts != null}">
+                    <c:forEach items="${userAccounts}" var="selectAccount">
+                        <option value="${selectAccount.account_id}">${selectAccount.account_name}</option>
+                    </c:forEach>
+                </c:if>
             </select>
             <!--End of Select Account Options-->
         </div>
