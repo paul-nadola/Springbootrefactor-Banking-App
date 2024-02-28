@@ -95,7 +95,7 @@ public class TransactController {
 
         // TODO : CHECK FOR ZERO VALUES
         if (transferAmount == 0){
-            redirectAttributes.addFlashAttribute("error", "Cannot transfer an amount of 0 (Zero)");
+            redirectAttributes.addFlashAttribute("error", "Cannot transfer an amount of 0 (Zero), please enter a value greater than 0");
             return "redirect:/app/dashboard";
         }
         // TODO : GET LOGGED IN USER
@@ -121,9 +121,48 @@ public class TransactController {
     //End of transfer method
 
     @PostMapping("/withdraw")
-    public String withdraw(){
+    public String withdraw(
+            @RequestParam("withdrawal_amount")String withdrawalAmount,
+            @RequestParam("account_id")String accountID,
+            HttpSession session,
+            RedirectAttributes redirectAttributes
+    ){
+        String errorMessage;
+        String successMessage;
+        //TODO : CHECK FOR EMPTY VALUES
+        if (withdrawalAmount.isEmpty() || accountID.isEmpty()){
+            errorMessage = "Withdrawal Amount and Account withdrawing from cannot be empty!";
+            redirectAttributes.addFlashAttribute("error", errorMessage);
+            return "redirect:/app/dashboard";
+        }
 
-        return "";
+        //TODO : CONVERT VARIABLES
+        double withdrawal_amount = Double.parseDouble(withdrawalAmount);
+        int account_id = Integer.parseInt(accountID);
+
+        //TODO : CHECK FOR 0 (ZERO) VALUES
+        if (withdrawal_amount == 0){
+            errorMessage = "Withdrawal amount cannot be of 0 (zero) value! " +
+                    "Please enter an amount greater than zero";
+            redirectAttributes.addFlashAttribute("error", errorMessage);
+            return "redirect:/app/dashboard";
+        }
+
+        //TODO : GET LOGGED IN USER
+        user = (User) session.getAttribute("user");
+
+        //TODO : GET CURRENT BALANCE
+        currentBalance = accountRepository.getAccountBalance(user.getUser_id(), account_id);
+
+        //TODO : SET NEW BALANCE
+        newBalance = currentBalance - withdrawal_amount;
+
+        //TODO : UPDATE ACCOUNT BALANCE
+        accountRepository.changeAccountBalanceId(newBalance,account_id);
+
+        successMessage = "Amount of "+ withdrawal_amount + " withdrew successfully";
+        redirectAttributes.addFlashAttribute("error", successMessage);
+        return "redirect:/app/dashboard";
     }
 
 }

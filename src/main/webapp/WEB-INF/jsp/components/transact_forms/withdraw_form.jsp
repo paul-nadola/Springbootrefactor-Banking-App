@@ -11,7 +11,7 @@
             <!-- Form Group -->
             <div class="form-group mb-2">
                 <label for="">Enter Withdrawal amount</label>
-                <input type="text" name="withdraw_amount" class="form-control" placeholder="Enter Withdrawal amount">
+                <input type="text" name="withdrawal_amount" class="form-control" placeholder="Enter Withdrawal amount">
             </div>
             <!--End of Form Group -->
              <!-- Form Group -->
