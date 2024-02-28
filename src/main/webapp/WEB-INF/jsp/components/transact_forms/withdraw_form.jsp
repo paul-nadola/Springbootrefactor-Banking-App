@@ -7,19 +7,24 @@
     <!-- Card Body -->
     <div class="card-body">
         <!--withdraw Form-->
-        <form action="" class="withdraw-form">
+        <form action="/transact/withdraw" method="POST" class="withdraw-form">
             <!-- Form Group -->
             <div class="form-group mb-2">
                 <label for="">Enter Withdrawal amount</label>
                 <input type="text" name="withdraw_amount" class="form-control" placeholder="Enter Withdrawal amount">
             </div>
             <!--End of Form Group -->
-            <!-- Form Group -->
+             <!-- Form Group -->
             <div class="form-group">
                 <label for="">Select Account</label>
                 <!--Select Account Options-->
                 <select name="account_id" class="form-control my-3" id="">
-                    <option value="">--Select Account--</option>
+                    <option value="">--Select Account Transferring From--</option>
+                    <c:if test="${userAccounts != null}">
+                        <c:forEach items="${userAccounts}" var="selectAccount">
+                            <option value="${selectAccount.account_id}">${selectAccount.account_name}</option>
+                        </c:forEach>
+                    </c:if>
                 </select>
                 <!--End of Select Account Options-->
             </div>

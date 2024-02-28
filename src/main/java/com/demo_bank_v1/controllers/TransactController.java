@@ -19,6 +19,10 @@ public class TransactController {
     @Autowired
     private AccountRepository accountRepository;
 
+    User user;
+    double currentBalance;
+    double newBalance;
+
     @PostMapping("/deposit")
     public String deposit(
             @RequestParam("deposit_amount") String depositAmount,
@@ -35,7 +39,7 @@ public class TransactController {
 
         // TODO: GET LOGGED IN USER
 
-        User user = (User)session.getAttribute("user");
+        user = (User)session.getAttribute("user");
 
         // TODO: GET CURRENT ACCOUNT BALANCE
         int acc_id = Integer.parseInt(accountID);
@@ -52,8 +56,8 @@ public class TransactController {
         }
 
         // TODO: UPDATE BALANCE:
-        double currentBalance = accountRepository.getAccountBalance(user.getUser_id(), acc_id);
-        double newBalance = currentBalance + depositAmountValue;
+        currentBalance = accountRepository.getAccountBalance(user.getUser_id(), acc_id);
+        newBalance = currentBalance + depositAmountValue;
 
         accountRepository.changeAccountBalanceId(newBalance, acc_id);
 
@@ -61,4 +65,67 @@ public class TransactController {
         return "redirect:/app/dashboard";
     }
 
+    //End of deposits
+
+    @PostMapping("/transfer")
+    public String transfer(
+            @RequestParam("transfer_from") String transfer_from,
+            @RequestParam("transfer_to") String transfer_to,
+            @RequestParam("transfer_amount") String transfer_amount,
+            HttpSession session,
+            RedirectAttributes redirectAttributes
+    ){
+        //TODO : CHECK FOR EMPTY FIELDS
+        if (transfer_from.isEmpty() || transfer_to.isEmpty() || transfer_amount.isEmpty()){
+            redirectAttributes.addFlashAttribute("error", "The account transferring from, to and transfer amount cannot be empty!");
+            return "redirect:/app/dashboard";
+        }
+
+        // TODO : CONVERT VARIABLES
+        int transferFromId = Integer.parseInt(transfer_from);
+        int transferToId = Integer.parseInt(transfer_to);
+        double transferAmount = Double.parseDouble(transfer_amount);
+
+        //TODO : CHECK IF TRANSFERRING INTO THE SAME ACCOUNT
+        if (transferFromId == transferToId){
+            redirectAttributes.addFlashAttribute("error", "You cannot transfer to the same account!" +
+                    "Please select the appropriate accounts to perform the transfer.");
+            return "redirect:/app/dashboard";
+        }
+
+        // TODO : CHECK FOR ZERO VALUES
+        if (transferAmount == 0){
+            redirectAttributes.addFlashAttribute("error", "Cannot transfer an amount of 0 (Zero)");
+            return "redirect:/app/dashboard";
+        }
+        // TODO : GET LOGGED IN USER
+        user = (User)session.getAttribute("user") ;
+
+        //TODO : GET THE CURRENT BALANCE
+        double currentBalanceDonor = accountRepository.getAccountBalance(user.getUser_id(), transferFromId);
+        double currentBalanceRecipient = accountRepository.getAccountBalance(user.getUser_id(), transferToId);
+
+        //TODO : SET NEW BALANCE;
+        //Changed the balance of the account transferred From:
+        double newBalanceDonor  = currentBalanceDonor - transferAmount;
+        accountRepository.changeAccountBalanceId(newBalanceDonor, transferFromId);
+
+        //Changed the balance of the account transferred To:
+        double newBalanceRecipient = currentBalanceRecipient + transferAmount;
+        accountRepository.changeAccountBalanceId(newBalanceRecipient, transferToId);
+
+        redirectAttributes.addFlashAttribute("success", "Amount transferred Successfully!");
+        return "redirect:/app/dashboard";
+    }
+
+    //End of transfer method
+
+    @PostMapping("/withdraw")
+    public String withdraw(){
+
+        return "";
+    }
+
 }
+
+
