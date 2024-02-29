@@ -161,7 +161,7 @@ public class TransactController {
         accountRepository.changeAccountBalanceId(newBalance,account_id);
 
         successMessage = "Amount of "+ withdrawal_amount + " withdrew successfully";
-        redirectAttributes.addFlashAttribute("error", successMessage);
+        redirectAttributes.addFlashAttribute("success", successMessage);
         return "redirect:/app/dashboard";
     }
 
