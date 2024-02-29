@@ -5,7 +5,9 @@
  <!-- Card Payment Card -->
     <div class="card payment-card">
         <!-- Card Body -->
-        <div class="card-body">
+        <!--Payment Form-->
+        <form action="/transact/payment" method="POST">
+            <div class="card-body">
             <!-- Form Group -->
             <div class="form-group mb-2">
                 <label for="">Beneficiary Account Holder</label>
@@ -57,6 +59,8 @@
             <!--End of Form Group -->
 
         </div>
+        </form>
+        <!--End of Payment Form-->
         <!--End of Card Body -->
     </div>
 <!--End of Card Payment Card -->
