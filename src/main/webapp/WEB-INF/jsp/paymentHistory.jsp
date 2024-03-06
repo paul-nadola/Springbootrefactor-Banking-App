@@ -11,7 +11,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/fontawesome-free-6.5.1-web/css/all.css">
     <link rel="stylesheet" href="../css/main.css">
-    <script src="../js/bootstrap.bundle.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!--<script src="../js/bootstrap.bundle.js"></script>-->
     <title>Dashboard</title>
 </head>
 <body>
