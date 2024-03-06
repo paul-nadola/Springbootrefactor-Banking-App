@@ -261,7 +261,7 @@ public class TransactController {
         if (currentBalance < paymentAmount) {
             errorMessage = "You have insufficient funds to perform this payment!";
             paymentRepository.makePayment(
-                    accountID, beneficiary, account_number, paymentAmount, reference, "failed", "Could not process payment due to insufficient funds!", currentDateTime
+                    accountID, beneficiary, account_number, paymentAmount, reference, "failed", "Insufficient funds!", currentDateTime
             );
 
             //Log failed transaction
